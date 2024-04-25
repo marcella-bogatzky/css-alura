@@ -1,0 +1,175 @@
+/*Para adicionar uma fonte, são necessárias algumas etapas:
+1) precisamos identificar a fonte no Google Fonts e clicar em "Get embed code" pra conseguir o código da fonte. Iremos utilizar o código identificdo com @import
+2) Devemos colar no arquivo CSS esse @import, para que a font escolhida seja transportada para o arquivo
+3) Devemos definir, por meio do parâmetro "font.family onde a fonte deve ser utilizada e colar as informações descritas na aba "CSS class" do Google Fonts (logo abaixo da @import)*/
+
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* { /*Esse é o CSS Reset. Nesse momento, estamos retirando a margem e o padding padrão do navegador*/
+    margin: 0;
+    padding: 0;
+}
+
+/* Dentro do CSS, também temos a possibilidade de utilizar variáveis. No CSS, existem dois tipos de variáveis:
+
+Escopo local: é uma variável que vai funcionar apenas dentro de pequenos blocos (por exemplo, somente no cabeçalho, ou somente do body)
+Escopo global: aplicado em todo o projeto
+
+O código para criar a variável é:
+:root {
+    --cor-primaria: #codigo_da_cor;
+    --cor-secundaria: #codigo_da_cor;
+} 
+
+O códio para utilizar a variável é:
+var(--cor-primaria);*/
+
+:root {
+    --cor-primaria: #000000;
+    --cor-secundaria: #F6F6F6;
+    --cor-terciaria: #22D4FD;
+} 
+
+/* Existem dois grandes grupos de medidas: absolutas e relativas
+- Pixel é uma medida absoluta, pois 16px são 16px sempre;
+- Rem é uma medida relativa. 1 rem equivale à 16 pixels 
+- % é uma medida relativa e se refere ao espaço disponível na <tag pai>*/
+
+/* Os SELETORES são o que marcam o que os parâmetros do CSS irão alterar na página. 
+O chamado "seletor de classe" (class) permite que selecionemos elementos específicos. Para marcar a classe em CSS é necessário começar com ponto (.)*/
+
+body { /*Aqui "body" está endo utilizado como um seletor*/
+    /*height: 100vh; Define a altura da página: 100% do viewport high*/
+    box-sizing: border-box; /*serve para definir o tamanho da "caixa" dentro do corpo da página (impede que as imagens saiam do corpo da página)*/
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+} 
+
+.cabecalho {
+    padding: 2% 0% 0% 15%;
+}
+
+.cabecalho__menu {
+    display: flex;
+    gap: 80px;
+}
+
+.cabecalho__menu__link {
+    font-family: 'Monteserrat', sans-serif;
+    font-size: 1.5rem; /*Define o tamanho da fonte. A princípio estávamos usando 24px, mas alteramos para 1.5rem para se adaptar às configurações do usuário*/
+    font-weight: 600;
+    color: var(--cor-terciaria);
+    text-decoration: none;
+}
+
+.apresentacao {
+    padding: 5% 15%;
+    display: flex; /*Responsável por organizar a posição dos objetos na página*/
+    align-items: center; /*Alinha os itens entre si*/
+    justify-content: space-between; /*Define o espaçamento entre os obejtos*/
+    gap: 82px;
+}
+
+.apresentacao__conteudo {
+    width: 50%; /*Define a largura que um elemento vai ocupar na tela. Estávaos usando o valor fixo de 615px, mas mas alteramos para % para se adaptar às configurações do usuário*/
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.apresentacao__conteudo__titulo {
+    font-size: 2.25rem; 
+    font-family: "Krona One", sans-serif;
+}
+
+.titulo-destaque { /*".titulo-destaque" é um seletor de classe que tem origem na marcação <strong class = "titulo-destaque" feita no arquivo html*/
+    color: var(--cor-terciaria);    
+}
+
+.apresentacao__conteudo__texto {
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.apresentacao__redes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px
+}
+
+.apresentacao__redes__subtitulo {
+    font-family: "Krona One", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.apresentacao__conteudo__botoes {
+    /* background-color: #22D4FD;
+    t: 280px;
+    border: 1px solid #22D4FD;
+    border-radius: 16px; Raio da curvatura */
+    /* padding: 21.5px 0; Altura e largura, separados sem vírgula */
+    /* text-align: center;
+    color: black;
+    font-size: 24px;
+    font-weight: 600; */
+    border: 2px solid var(--cor-terciaria);  
+    width: 50%;
+    height: 32px;
+    text-align: center;
+    border-radius: 8px; 
+    font-weight: 600; 
+    padding: 21.5px 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    text-decoration: none; /*Retira o sublinhado do link*/
+    color:rgb(255, 255, 255);
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+}
+
+.apresentacao__conteudo__botoes:hover { /*O "hover" personaliza um aspecto quando o mouse passa por cima */
+    background-color: #272727
+}
+
+.apresentacao__imagem {
+     width: 50%; /*Quando utilizamos percentual, ele vai se referir ao espaço disponível na tag pai, que nesse caso é a tag "main" */
+}
+
+.rodape {
+    padding: 24px;
+    color: var(--cor-primaria);
+    background-color: var(--cor-terciaria);  
+    text-align: center;
+    font-family: 'Monteserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* "Medias Querys" (@media) são uma propriedade que vai garantir que se a tela tiver valor máximo / mínimo determinado, um estilo personalizado será aplicado */
+
+@media (max-width: 1200px) /* Dentro do parênteses vai a condição */
+{
+
+    .cabecalho {
+        padding: 10%;
+    }
+
+    .cabecalho__menu {
+        justify-content: center;
+    }
+
+    .apresentacao {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+
+    .apresentacao__conteudo {
+        width: auto;
+    }
+}
